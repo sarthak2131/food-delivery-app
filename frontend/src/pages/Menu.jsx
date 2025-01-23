@@ -109,12 +109,12 @@ const Menu = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center bg-gray-100 py-6">
+    <div className="min-h-screen flex flex-col items-center bg-gray-100 py-6 px-4">
       <h1 className="text-3xl font-bold mb-6">Menu</h1>
       {errorMessage && <p className="text-red-500 mb-4">{errorMessage}</p>}
 
-      <div className="w-3/4 md:w-1/2 bg-white shadow-lg rounded-lg p-4 space-y-2 mb-6">
-        <h2 className="text-xl font-bold mb-4">Add New Item</h2>
+      <div className="w-full max-w-2xl bg-white shadow-lg rounded-lg p-4 space-y-4 mb-6">
+        <h2 className="text-xl font-bold">Add New Item</h2>
         <input
           type="text"
           name="name"
@@ -149,8 +149,8 @@ const Menu = () => {
       </div>
 
       {editItem && (
-        <div className="w-3/4 md:w-1/2 bg-white shadow-lg rounded-lg p-4 space-y-2 mb-6">
-          <h2 className="text-xl font-bold mb-4">Edit Item</h2>
+        <div className="w-full max-w-2xl bg-white shadow-lg rounded-lg p-4 space-y-4 mb-6">
+          <h2 className="text-xl font-bold">Edit Item</h2>
           <input
             type="text"
             name="name"
@@ -191,14 +191,14 @@ const Menu = () => {
         </div>
       )}
 
-      <ul className="w-3/4 md:w-1/2 bg-white shadow-lg rounded-lg p-4 space-y-2">
+      <ul className="w-full max-w-2xl bg-white shadow-lg rounded-lg p-4 space-y-2">
         {menuItems.length > 0 ? (
           menuItems.map((item) => {
             if (!item || !item._id) return null; // Defensive check
             return (
               <li key={item._id} className="flex justify-between items-center border-b py-2">
                 <span>{item.name}</span>
-                <span>${item.price}</span>
+                <span>₹{item.price}</span> {/* Changed to rupee symbol */}
                 <div>
                   <button
                     onClick={() => handleEditItem(item)}
