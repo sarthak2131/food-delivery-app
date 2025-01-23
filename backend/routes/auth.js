@@ -1,11 +1,11 @@
-const express = require('express');
-const User = require('../models/User');
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcryptjs');
+import express from 'express';
+import jwt from 'jsonwebtoken';
+import bcrypt from 'bcryptjs';
+import User from '../models/User.js'; 
 
 const router = express.Router();
 
-// Register new user
+
 router.post('/register', async (req, res) => {
   const { username, password } = req.body;
 
@@ -18,7 +18,7 @@ router.post('/register', async (req, res) => {
   res.status(201).send('User registered successfully');
 });
 
-// Login user and return JWT token
+
 router.post('/login', async (req, res) => {
   const { username, password } = req.body;
 
@@ -40,4 +40,4 @@ router.post('/login', async (req, res) => {
   res.json({ token });
 });
 
-module.exports = router;
+export default router;

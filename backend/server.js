@@ -1,8 +1,7 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const dotenv = require('dotenv');
-const cors = require('cors');
-
+import express from 'express';
+import dotenv from 'dotenv';
+import cors from 'cors';
+import connectDB from './config/db.js'; 
 dotenv.config();
 
 const app = express();
@@ -10,25 +9,17 @@ app.use(express.json());
 app.use(cors());
 
 
-const authRoutes = require('./routes/auth');
-const menuRoutes = require('./routes/menu');
-const orderRoutes = require('./routes/order');
-
+import authRoutes from './routes/auth.js';
+import menuRoutes from './routes/menu.js';
+import orderRoutes from './routes/order.js';
+import errorHandler from './middleware/errorHandler.js';
 app.use('/api', authRoutes);
 app.use('/api', menuRoutes);
 app.use('/api', orderRoutes);
 
 
-const connectDB = async () => {
-  try {
-    await mongoose.connect(process.env.MONGO_URI);
-    console.log('MongoDB Connected');
-  } catch (err) {
-    console.error(err.message);
-    process.exit(1);
-  }
-};
 
+app.use(errorHandler);
 connectDB();
 
 const PORT = process.env.PORT || 5000;
