@@ -10,10 +10,17 @@ const Navbar = () => {
   };
 
   return (
-    <nav>
-      <Link to="/menu">Menu</Link>
-      <Link to="/orders">Orders</Link>
-      <button onClick={handleLogout}>Logout</button>
+    <nav className="bg-gray-800 p-4 flex justify-between items-center">
+      <div className="space-x-4">
+        <Link to="/menu" className="text-white hover:text-gray-400">Menu</Link>
+        <Link to="/orders" className="text-white hover:text-gray-400">Orders</Link>
+      </div>
+      <button
+        onClick={handleLogout}
+        className="bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600"
+      >
+        Logout
+      </button>
     </nav>
   );
 };

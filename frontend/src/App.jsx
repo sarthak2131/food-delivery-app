@@ -1,5 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
 import Navbar from './components/Navbar';
 import Login from './pages/Login';
 import Register from './pages/Register';
@@ -9,6 +10,7 @@ import Orders from './pages/Orders';
 const App = () => {
   return (
     <>
+      <Toaster />
       <Navbar />
       <Routes>
         <Route path="/" element={<Login />} />

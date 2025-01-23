@@ -23,11 +23,12 @@ router.post('/menu', async (req, res) => {
   try {
     const menuItem = new Menu({ name, category, price, availability });
     await menuItem.save();
-    res.status(201).send('Menu item added');
+    res.status(201).json({ message: 'Menu item added', menuItem }); // Return the created menu item
   } catch (error) {
     res.status(500).send('Server error');
   }
 });
+
 
 
 router.put('/menu/:id', async (req, res) => {
