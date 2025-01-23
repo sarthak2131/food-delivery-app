@@ -91,7 +91,7 @@ const Orders = () => {
               <option value="">Select Item</option>
               {menuItems.map((menuItem) => (
                 <option key={menuItem._id} value={menuItem._id}>
-                  {menuItem.name} - ${menuItem.price}
+                  {menuItem.name} - ₹{menuItem.price}
                 </option>
               ))}
             </select>
@@ -134,7 +134,7 @@ const Orders = () => {
             <li key={order._id} className="flex flex-col md:flex-row justify-between border-b py-2">
               <div className="flex flex-col space-y-2">
                 <span>Order ID: {order._id}</span>
-                <span>Total Amount: ${order.totalAmount}</span>
+                <span>Total Amount: ₹{order.totalAmount}</span>
                 <span>Status: {order.status}</span>
               </div>
               <div className="flex flex-col mt-2 md:mt-0">
